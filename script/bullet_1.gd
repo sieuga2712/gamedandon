@@ -33,6 +33,9 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body==$"../TileMap":
+	if body!=$"../CharacterBody2D":
 		animation.play("boom")
 		animation.scale=Vector2(0.7, 0.7)
+
+	
+	

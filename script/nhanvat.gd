@@ -57,8 +57,3 @@ func fire():
 		bullet_reload=true
 		timer.start()
 		get_parent().add_child(bullet)
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body==$"../TileMap":
-		print("wall")
