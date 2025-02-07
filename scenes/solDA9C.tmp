@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b6xwbtwqiexmw"]
+[gd_scene load_steps=57 format=3 uid="uid://b6xwbtwqiexmw"]
 
 [ext_resource type="Script" path="res://script/solider.gd" id="1_ja1hw"]
 [ext_resource type="Texture2D" uid="uid://cedxa4af2d7si" path="res://asset/human/attack/attack down1.png" id="1_ups6c"]
@@ -282,9 +282,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cm8j4"]
 size = Vector2(13, 13)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6uv27"]
-radius = 120.0
-
 [node name="Solider" type="CharacterBody2D"]
 script = ExtResource("1_ja1hw")
 metadata/_edit_group_ = true
@@ -293,9 +290,9 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_movlk")
 animation = &"idle_B"
 
-[node name="body" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_cm8j4")
 
 [node name="TimerDie" type="Timer" parent="."]
@@ -358,13 +355,4 @@ texture = ExtResource("53_bxo1d")
 [node name="takeDame" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="view" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="view"]
-shape = SubResource("CircleShape2D_6uv27")
-
-[node name="ramdomrun" type="Timer" parent="."]
-
-[connection signal="area_entered" from="body" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="body" to="." method="_on_body_body_entered"]
-[connection signal="body_exited" from="body" to="." method="_on_body_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

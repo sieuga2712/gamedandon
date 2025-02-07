@@ -27,7 +27,7 @@ func animated_boom():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if animation.animation!="boom":
-		velocity=Vector2(speed,0).rotated(dir- deg_to_rad(90))
+		velocity=Vector2(speed,0).rotated(dir)
 	if animation.animation=="boom":
 		velocity = Vector2(0, 0)
 	move_and_slide()

@@ -9,6 +9,8 @@ const JUMP_VELOCITY = -400.0
 var animation: AnimatedSprite2D
 var bullet_path=preload("res://scenes/bullet1.tscn")
 var bullet_reload=false;
+var listArea: Array[Vector2]
+var collisionShape:CollisionObject2D
 @onready var timer = Timer.new()
 func _ready():
 	animation=$AnimatedSprite2D
@@ -19,6 +21,7 @@ func _ready():
 	
 func _on_timer_timeout() -> void:
 	bullet_reload=false
+
 func _physics_process(delta: float) -> void:
 	
 	var mouse_position = get_global_mouse_position()
@@ -46,7 +49,8 @@ func _physics_process(delta: float) -> void:
 func fire():
 	if bullet_reload==false:
 		var bullet=bullet_path.instantiate()
-		bullet.dir=rotation
+		bullet.dir=rotation - deg_to_rad(90)
+		var mouse_position = get_global_mouse_position()
 		var random = randi_range(0, 1)
 		if random==1:
 			bullet.pos=$Node2D.global_position
