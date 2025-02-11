@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dralrgkb6bf8i"]
+[gd_scene load_steps=23 format=3 uid="uid://dralrgkb6bf8i"]
 
 [ext_resource type="PackedScene" uid="uid://b6xwbtwqiexmw" path="res://scenes/solider.tscn" id="1_gr06y"]
 [ext_resource type="Script" path="res://script/nhanvat.gd" id="2_1odaf"]
@@ -346,6 +346,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4sdh"]
 size = Vector2(26.875, 26.6875)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlrgp"]
+radius = 112.285
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-32, 24)
 
@@ -394,3 +397,11 @@ position = Vector2(8, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["player"]]
 shape = SubResource("RectangleShape2D_m4sdh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-968, 416)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-96, 296)
+shape = SubResource("CircleShape2D_rlrgp")
