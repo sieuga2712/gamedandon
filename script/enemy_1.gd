@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var Update_animation = preload("res://script/update_animation.gd")
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
 var HP = 500.0
@@ -21,8 +20,6 @@ var type_ani="idle"
 var nav_agent:NavigationAgent2D
 func _ready():
 	var hearts_list = $HBoxContainer
-	var hearts_list2 = $CommonChar/HBoxContainer
-	
 	nav_agent=$NavigationAgent2D
 	colli=$CollisionShape2D
 	animation = get_node("AnimatedSprite2D")
@@ -76,7 +73,8 @@ func _physics_process(delta: float) -> void:
 	var distance_to_target = position.distance_to(nav_agent.target_position)
 
 	if animation.animation!="death":
-		animation.play(Update_animation.update_animation(velocity))
+		update_animation()
+		animation.play(type_ani+"_"+direction_ani)
 		if distance_to_target > 3:
 			var direction = (nav_agent.target_position - position).normalized()
 			velocity = direction * SPEED
@@ -97,3 +95,20 @@ func _on_take_dame_timeout() -> void:
 	animation.visible = true
 	if(animation.animation!="death"):
 		cantakedmg = true
+func update_animation()-> void:
+	if velocity.x==0 and velocity.y==0:
+		type_ani="idle"
+	if velocity.x!=0 or velocity.y!=0:
+		type_ani="walk"
+	if abs(velocity.x)>=abs(velocity.y):
+		if velocity.x>0 :
+			direction_ani="R"
+		if velocity.x<0:
+			direction_ani="L"
+	else:
+		if velocity.y>0 :
+			direction_ani="B"
+		if velocity.y<0:
+			direction_ani="T"
+	
+	

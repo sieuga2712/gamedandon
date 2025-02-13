@@ -295,7 +295,7 @@ script = ExtResource("1_ja1hw")
 position = Vector2(-7.15256e-07, -7.15256e-07)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_movlk")
-animation = &"atk_U"
+animation = &"walk_B"
 
 [node name="body" type="Area2D" parent="."]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://c4ueapgcmwvn"]
+[gd_scene load_steps=59 format=3 uid="uid://c4ueapgcmwvn"]
 
 [ext_resource type="Texture2D" uid="uid://cedxa4af2d7si" path="res://asset/human/attack/attack down1.png" id="1_a5j4f"]
+[ext_resource type="Script" path="res://script/enemy_1.gd" id="1_hqxuw"]
 [ext_resource type="Texture2D" uid="uid://c7tlpowbstvp2" path="res://asset/human/attack/attack down2.png" id="2_3d856"]
 [ext_resource type="Texture2D" uid="uid://bnslvfqrrr36h" path="res://asset/human/attack/attack down3.png" id="3_lequo"]
 [ext_resource type="Texture2D" uid="uid://cm52qo8a2drgk" path="res://asset/human/attack/attack down4.png" id="4_su4qf"]
@@ -52,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://dbeyyv8jf2pa7" path="res://asset/human/walk/walk up2.png" id="50_ve7dr"]
 [ext_resource type="Texture2D" uid="uid://dbgeq3csrt2hv" path="res://asset/human/walk/walk up3.png" id="51_p7xv0"]
 [ext_resource type="Texture2D" uid="uid://c0rop0a4ov7tr" path="res://asset/human/walk/walk up4.png" id="52_kikns"]
+[ext_resource type="Texture2D" uid="uid://d4mrt1dj4tjaq" path="res://asset/Heart/HeartS.png" id="54_wo2en"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3b0e"]
 animations = [{
@@ -277,7 +279,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8jgs"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_356ui"]
+radius = 88.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8082a"]
+radius = 160.0
+
 [node name="Enemy1" type="CharacterBody2D"]
+script = ExtResource("1_hqxuw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.482353, 0.137255, 1)
@@ -285,3 +297,88 @@ position = Vector2(-7.15256e-07, -7.15256e-07)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_m3b0e")
 animation = &"idle_B"
+
+[node name="body" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+shape = SubResource("RectangleShape2D_o8jgs")
+
+[node name="TimerDie" type="Timer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = -8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="heart" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart"]
+position = Vector2(4, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="heart2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart2"]
+position = Vector2(8, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="heart3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart3"]
+position = Vector2(12, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="heart4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart4"]
+position = Vector2(16, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="heart5" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart5"]
+position = Vector2(20, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="heart6" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/heart6"]
+position = Vector2(24, 4)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("54_wo2en")
+
+[node name="takeDame" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="ramdomrun" type="Timer" parent="."]
+
+[node name="view" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view"]
+shape = SubResource("CircleShape2D_356ui")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(0.919754, 0.291758, 0, 1)
+debug_path_custom_line_width = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o8jgs")
+
+[node name="phathiendich" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phathiendich"]
+shape = SubResource("CircleShape2D_8082a")
