@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b6xwbtwqiexmw"]
+[gd_scene load_steps=58 format=3 uid="uid://b6xwbtwqiexmw"]
 
 [ext_resource type="Script" path="res://script/solider.gd" id="1_ja1hw"]
 [ext_resource type="Texture2D" uid="uid://cedxa4af2d7si" path="res://asset/human/attack/attack down1.png" id="1_ups6c"]
@@ -283,9 +283,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ak7jd"]
-radius = 96.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_krea4"]
+radius = 88.0
 
 [node name="Solider" type="CharacterBody2D"]
 motion_mode = 1
@@ -377,7 +375,7 @@ debug_path_custom_color = Color(0.919754, 0.291758, 0, 1)
 debug_path_custom_line_width = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_krea4")
+shape = SubResource("RectangleShape2D_cm8j4")
 
 [connection signal="area_entered" from="body" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="body" to="." method="_on_body_body_entered"]

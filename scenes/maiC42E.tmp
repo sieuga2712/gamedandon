@@ -398,7 +398,3 @@ position = Vector2(8, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["player"]]
 shape = SubResource("RectangleShape2D_m4sdh")
-
-[node name="enemyList" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0

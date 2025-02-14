@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c4ueapgcmwvn"]
+[gd_scene load_steps=58 format=3 uid="uid://c4ueapgcmwvn"]
 
 [ext_resource type="Texture2D" uid="uid://cedxa4af2d7si" path="res://asset/human/attack/attack down1.png" id="1_a5j4f"]
 [ext_resource type="Script" path="res://script/enemy_1.gd" id="1_hqxuw"]
@@ -282,11 +282,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8jgs"]
 size = Vector2(16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_356ui"]
-radius = 88.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8082a"]
-radius = 160.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_kis60"]
+radius = 16.0
 
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_hqxuw")
@@ -368,7 +365,7 @@ wait_time = 0.05
 [node name="view" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="view"]
-shape = SubResource("CircleShape2D_356ui")
+shape = SubResource("CircleShape2D_kis60")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -378,7 +375,7 @@ debug_path_custom_line_width = 5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o8jgs")
 
-[node name="phathiendich" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="phathiendich"]
-shape = SubResource("CircleShape2D_8082a")
+[connection signal="area_entered" from="body" to="." method="_on_body_area_entered"]
+[connection signal="timeout" from="TimerDie" to="." method="_on_timer_die_timeout"]
+[connection signal="timeout" from="takeDame" to="." method="_on_take_dame_timeout"]
+[connection signal="timeout" from="ramdomrun" to="." method="_on_ramdomrun_timeout"]

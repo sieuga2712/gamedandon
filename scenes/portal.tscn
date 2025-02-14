@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4fu8e6cnexww"]
+
+[ext_resource type="Script" path="res://script/portal.gd" id="1_wnuq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rr68b"]
+radius = 160.0
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_wnuq3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rr68b")
