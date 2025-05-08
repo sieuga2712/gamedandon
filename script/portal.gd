@@ -4,7 +4,7 @@ var common = preload("res://script/common/common.gd")
 var colli: CollisionShape2D
 var enemy_path=preload("res://scenes/enemy1.tscn")
 
-var numberEmemy=6
+var numberEmemy=18
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	colli = $CollisionShape2D

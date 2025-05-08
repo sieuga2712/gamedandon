@@ -70,22 +70,26 @@ func _on_take_dame_timeout() -> void:
 		cantakedmg = true
 
 func _physics_process(delta: float) -> void:
-	var distance_to_target = position.distance_to(nav_agent.target_position)
+	if animation.animation == "death":
+		return
+	var distance_to_target = 0
+	if nav_agent and nav_agent.target_position != Vector2.ZERO:
+		distance_to_target = position.distance_to(nav_agent.target_position)
 	if animation.animation != "death":
 		animation.play(Update_animation.update_animation(State,velocity))
 		if distance_to_target > 3:
 			var direction = (nav_agent.target_position - position).normalized()
 			velocity = direction * SPEED
-			move_and_slide()
 		else:
 			velocity = Vector2.ZERO
-			move_and_slide()
 			if timeRamdoRun.is_stopped():
 				timeRamdoRun.start()
+		move_and_slide()
+		
 
 func _on_ramdomrun_timeout() -> void:
 	nav_agent.target_position = common.get_random_position_in_area(viewCollisionShappe, position)
-	var random = randi_range(1, 5)
+	var random = randi() % 5 + 1
 	timeRamdoRun.wait_time = random
 func check_enemy()->bool:
 	for child in get_parent().get_children():
